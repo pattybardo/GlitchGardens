@@ -9,16 +9,25 @@ public class MusicManager : MonoBehaviour {
 
 	private AudioSource audioSource;
 
+	static MusicManager instance = null;
+
 	void Awake ()
 	{
 		DontDestroyOnLoad(gameObject);
 	}
 
-	void Start () {
-		audioSource = GetComponent<AudioSource>();
-		audioSource.clip = levelMusicChangeArray[0];
-		audioSource.loop = true;
-		audioSource.Play();
+	void Start ()
+	{
+		if (instance != null && instance !=this) {
+			Destroy (gameObject);
+			print ("Duplicate music player self-destructing!");
+		} else {
+			instance = this;
+			audioSource = GetComponent<AudioSource> ();
+			audioSource.clip = levelMusicChangeArray [0];
+			audioSource.loop = true;
+			audioSource.Play ();
+		}
 	}
 
 	void OnEnable()
