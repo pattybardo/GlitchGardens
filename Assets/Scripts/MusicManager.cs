@@ -45,7 +45,9 @@ public class MusicManager : MonoBehaviour {
      void OnLevelFinishedLoading (Scene scene, LoadSceneMode mode)
 	{
 		Debug.Log ("Level Loaded: " + scene.buildIndex);
-
+		if (scene.buildIndex == 0) {
+			audioSource = GetComponent<AudioSource> ();
+		}
 		if (levelMusicChangeArray [scene.buildIndex]) {
 			audioSource.clip = levelMusicChangeArray [scene.buildIndex];
 			audioSource.loop = true;
