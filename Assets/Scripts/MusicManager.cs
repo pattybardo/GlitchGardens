@@ -48,13 +48,20 @@ public class MusicManager : MonoBehaviour {
 		if (scene.buildIndex == 0) {
 			audioSource = GetComponent<AudioSource> ();
 		}
-		if (levelMusicChangeArray [scene.buildIndex]) {
+		bool isCurrentSong = (audioSource.clip == levelMusicChangeArray [scene.buildIndex]);
+		if (levelMusicChangeArray [scene.buildIndex] && !isCurrentSong) {
 			audioSource.clip = levelMusicChangeArray [scene.buildIndex];
 			audioSource.loop = true;
 			audioSource.Play ();
-		} else {
+		} else if (!levelMusicChangeArray [scene.buildIndex]) {
 			Debug.Log("Missing AudioClip at index: " + scene.buildIndex);
+		} else {
+			Debug.Log("Continued playing song");
 		}
 
      }
+
+	public void ChangeVolume (float volume) {
+		audioSource.volume = volume;
+	}
 }

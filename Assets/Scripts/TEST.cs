@@ -14,9 +14,6 @@ public class TEST : MonoBehaviour {
 		PlayerPrefsManager.UnlockLevel(1);
 		print(PlayerPrefsManager.IsLevelUnlocked(1));
 
-		print(PlayerPrefsManager.GetDifficulty());
-		PlayerPrefsManager.SetDifficulty(23);
-		print(PlayerPrefsManager.GetDifficulty());
 
 
 
