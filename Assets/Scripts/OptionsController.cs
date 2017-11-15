@@ -9,11 +9,11 @@ public class OptionsController : MonoBehaviour {
 	public Slider difficultySlider;
 	public LevelManager levelManager;
 
-	public float defaultVolume = 0.5f;
-	public float defaultDifficulty = 0f;
+	private float defaultVolume = 0.5f;
+	private float defaultDifficulty = 1f;
 
 	private MusicManager musicManager;
-	// Use this for initialization
+
 	void Start () {
 		musicManager = GameObject.FindObjectOfType<MusicManager>();
 		volumeSlider.value = PlayerPrefsManager.GetMasterVolume();
@@ -37,5 +37,7 @@ public class OptionsController : MonoBehaviour {
 		PlayerPrefsManager.SetMasterVolume(volumeSlider.value);
 		PlayerPrefsManager.SetDifficulty(difficultySlider.value);
 		levelManager.LoadLevel(1);
+
+
 	}
 }

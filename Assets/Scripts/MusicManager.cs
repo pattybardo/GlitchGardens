@@ -26,6 +26,7 @@ public class MusicManager : MonoBehaviour {
 			audioSource = GetComponent<AudioSource> ();
 			audioSource.clip = levelMusicChangeArray [0];
 			audioSource.loop = true;
+			audioSource.volume = PlayerPrefsManager.GetMasterVolume();
 			audioSource.Play ();
 		}
 	}

@@ -50,8 +50,9 @@ public class PlayerPrefsManager : MonoBehaviour {
 
 	public static void SetDifficulty (float difficulty)
 	{
-		if (difficulty >= 0f && difficulty <= 1f) {
+		if (difficulty >= 1f && difficulty <= 3f) {
 			PlayerPrefs.SetFloat (DIFFICULTY_KEY, difficulty);
+			Debug.Log("PlayerPrefsManager: Difficulty set to: " + difficulty);
 		} else {
 			Debug.LogError("PlayerPrefsManager: Difficulty out of range");
 		}
